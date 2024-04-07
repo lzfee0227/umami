@@ -34,7 +34,7 @@ async function relationalQuery(websiteId: string, filters: QueryFilters) {
         and website_event.event_name = {{event}}
       group by website_event.event_name, event_data.event_key, event_data.data_type, event_data.string_value
       order by 1 asc, 2 asc, 3 asc, 4 desc
-      `,
+      `, // TODO: 无 limit
       params,
     );
   }
@@ -54,7 +54,7 @@ async function relationalQuery(websiteId: string, filters: QueryFilters) {
     group by website_event.event_name, event_data.event_key, event_data.data_type
     order by 1 asc, 2 asc
     limit 100
-    `,
+    `, // TODO: limit 100
     params,
   );
 }
