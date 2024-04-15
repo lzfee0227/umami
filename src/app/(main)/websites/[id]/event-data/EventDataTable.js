@@ -3,7 +3,6 @@ import { GridTable, GridColumn } from 'react-basics';
 import { useMessages, useNavigation } from 'components/hooks';
 import Empty from 'components/common/Empty';
 import { DATA_TYPES } from 'lib/constants';
-import { isStdEvent } from './base';
 
 export function EventDataTable({ data = [] }) {
   const { formatMessage, labels } = useMessages();
@@ -16,15 +15,11 @@ export function EventDataTable({ data = [] }) {
   return (
     <GridTable data={data}>
       <GridColumn name="eventName" label={formatMessage(labels.event)}>
-        {row =>
-          isStdEvent(row) ? (
-            <Link href={makeUrl({ event: row.eventName })} shallow={true}>
-              {row.eventName}
-            </Link>
-          ) : (
-            <>{row.eventName}</>
-          )
-        }
+        {row => (
+          <Link href={makeUrl({ event: row.eventName })} shallow={true}>
+            {row.eventName}
+          </Link>
+        )}
       </GridColumn>
       <GridColumn name="fieldName" label={formatMessage(labels.field)}>
         {row => row.fieldName}

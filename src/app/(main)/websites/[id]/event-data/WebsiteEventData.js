@@ -1,7 +1,5 @@
 'use client';
-import { useMemo } from 'react';
 import { Flexbox, Loading } from 'react-basics';
-import { useIsSufyMain, getBaseEvents } from './base';
 import EventDataTable from './EventDataTable';
 import EventDataValueTable from './EventDataValueTable';
 import { EventDataMetricsBar } from './EventDataMetricsBar';
@@ -31,19 +29,7 @@ export default function WebsiteEventData({ websiteId }) {
   const {
     query: { event },
   } = useNavigation();
-  const { data: events, isLoading } = useData(websiteId, event);
-
-  const isSufyMain = useIsSufyMain(websiteId);
-  const data = useMemo(() => {
-    if (!events) {
-      return events;
-    }
-
-    return (isSufyMain ? events : getBaseEvents(events)).map(event => ({
-      ...event,
-      eventName: event.eventName || 'views', // 顺便展示了 PV 对应的自定义字段数据
-    }));
-  }, [events, isSufyMain]);
+  const { data, isLoading } = useData(websiteId, event);
 
   return (
     <Flexbox className={styles.container} direction="column" gap={20}>

@@ -1,4 +1,4 @@
-import { useWebsite } from 'components/hooks';
+// TODO: 后续支持 oem 之后才会用到的代码
 
 /** 只包含部分字段 */
 export interface EventData {
@@ -44,15 +44,4 @@ export function getBaseEvents(events: EventData[]): EventData[] {
           }
         : data,
     );
-}
-
-export function useIsSufyMain(websiteId: string | undefined | null): boolean | undefined {
-  const website = useWebsite(websiteId).data;
-
-  if (!websiteId) {
-    return;
-  }
-
-  const domain: string = (website as any)?.domain || ''; // 原本的类型就很有问题…
-  return domain.toLowerCase().includes('sufy');
 }
