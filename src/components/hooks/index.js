@@ -6,6 +6,7 @@ export * from './useDocumentClick';
 export * from './useEscapeKey';
 export * from './useFilters';
 export * from './useForceUpdate';
+export * from './useIsSufyMain';
 export * from './useFormat';
 export * from './useLanguageNames';
 export * from './useLocale';
